@@ -15,7 +15,9 @@ service Msg {
 }
 
 message MsgCreateStudent {
+  option (cosmos.msg.v1.signer) = "id";
 
+  string id = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 }
 
 message MsgCreateStudentResponse {
@@ -23,7 +25,9 @@ message MsgCreateStudentResponse {
 }
 
 message MsgDeleteStudent {
+  option (cosmos.msg.v1.signer) = "id";
 
+  string id = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 }
 
 message MsgDeleteStudentResponse {

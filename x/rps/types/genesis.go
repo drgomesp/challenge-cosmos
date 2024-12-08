@@ -17,7 +17,7 @@ func (gs *GenesisState) Validate() error {
 		// Validate if the game number already exists
 		_, ok := unique[game.Id]
 		if ok {
-			return errors.New("Id duplicated")
+			return errors.New("id duplicated")
 		}
 
 		// Validate each game

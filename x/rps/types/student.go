@@ -11,19 +11,19 @@ func DefaultStudents() (Students []Student) {
 	return
 }
 
-func (g Student) GetStudentAddress() (sdk.AccAddress, error) {
+func (g *Student) GetStudentAddress() (sdk.AccAddress, error) {
 	return getStudentAddress(g.Id)
 }
 
-func (g Student) GetStudentName() string {
+func (g *Student) GetStudentName() string {
 	return g.Name
 }
 
-func (g Student) GetStudentAge() uint64 {
+func (g *Student) GetStudentAge() uint64 {
 	return g.Age
 }
 
-func (g Student) Validate() error {
+func (g *Student) Validate() error {
 	// Get Student id
 	address, err := g.GetStudentAddress()
 	if err != nil {
@@ -31,11 +31,11 @@ func (g Student) Validate() error {
 	}
 
 	if address.Empty() {
-		return errors.New("Address empty")
+		return errors.New("address empty")
 	}
 
 	if g.Age < 0 {
-		return errors.New("Invalid Age")
+		return errors.New("invalid Age")
 	}
 
 	return nil
@@ -44,5 +44,5 @@ func (g Student) Validate() error {
 func getStudentAddress(address string) (sdk.AccAddress, error) {
 	// Validate the address has our prefix (it means the wallet is from out blockchain)
 	addr, err := sdk.AccAddressFromBech32(address)
-	return addr, sdkerrors.Wrap(err, "Invalid Address")
+	return addr, sdkerrors.Wrap(err, "invalid address")
 }
