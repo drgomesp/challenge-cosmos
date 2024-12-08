@@ -1,0 +1,32 @@
+syntax = "proto3";
+package lb.rps.v1;
+
+import "gogoproto/gogo.proto";
+import "cosmos_proto/cosmos.proto";
+import "cosmos/msg/v1/msg.proto";
+
+option go_package = "challenge/x/rps/types"; // store the generated files here
+
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+
+  rpc CreateStudent(MsgCreateStudent) returns (MsgCreateStudentResponse);
+  rpc DeleteStudent(MsgDeleteStudent) returns (MsgDeleteStudentResponse);
+}
+
+message MsgCreateStudent {
+
+}
+
+message MsgCreateStudentResponse {
+
+}
+
+message MsgDeleteStudent {
+
+}
+
+message MsgDeleteStudentResponse {
+
+}
+

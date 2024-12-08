@@ -1,0 +1,21 @@
+syntax = "proto3";
+package lb.rps.v1;
+
+import "lb/rps/v1/types.proto";
+import "google/api/annotations.proto";
+import "cosmos/query/v1/query.proto";
+
+option go_package = "challenge/x/rps/types"; // store the generated files here
+
+service Query {
+  rpc GetStudent(GetStudentRequest) returns (GetStudentResponse) {
+    option (cosmos.query.v1.module_query_safe) = true;
+  }
+}
+
+message GetStudentRequest {
+}
+
+message GetStudentResponse {
+  lb.rps.v1.Student student = 1;
+}

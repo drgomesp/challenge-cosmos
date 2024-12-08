@@ -18,8 +18,6 @@ func NewQueryServerImpl(keeper Keeper) types.QueryServer {
 	}
 }
 
-func (qs queryServer) GetStudent(ctx context.Context, req *types.QueryGetStudentRequest) (*types.QueryGetStudentResponse, error) {
-	// TODO: Create function to get student by Id
-	// Return response
-	return &types.QueryGetStudentResponse{Student: nil}, nil
+func (qs queryServer) GetStudent(ctx context.Context, req *types.GetStudentRequest) (*types.GetStudentResponse, error) {
+	return &types.GetStudentResponse{Student: nil}, nil
 }
