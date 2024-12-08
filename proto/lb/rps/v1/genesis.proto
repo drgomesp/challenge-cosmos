@@ -1,0 +1,13 @@
+syntax = "proto3";
+package lb.rps.v1;
+
+option go_package = "challenge/x/rps/types"; // store the generated files here
+
+import "gogoproto/gogo.proto";
+import "lb/rps/v1/types.proto";
+
+// GenesisState defines the rps module's genesis State
+message GenesisState {
+  // Student defines the state in the module
+  repeated Student students = 1 [ (gogoproto.nullable) = false ];
+}
