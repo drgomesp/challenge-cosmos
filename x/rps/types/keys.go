@@ -1,6 +1,9 @@
 package types
 
+import "cosmossdk.io/collections"
+
 const ModuleName = "rps"
 
-// Here store the stateless collection keys
-var ()
+var (
+	StudentsKey = collections.NewPrefix(0)
+)

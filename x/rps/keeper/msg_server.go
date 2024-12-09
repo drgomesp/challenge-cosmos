@@ -1,9 +1,9 @@
 package rpsKeeper
 
 import (
-	"context"
-
 	"challenge/x/rps/types"
+	"context"
+	"fmt"
 )
 
 type msgServer struct {
@@ -19,7 +19,25 @@ func NewMsgServer(keeper Keeper) types.MsgServer {
 }
 
 func (s *msgServer) CreateStudent(ctx context.Context, msg *types.MsgCreateStudent) (*types.MsgCreateStudentResponse, error) {
-	return &types.MsgCreateStudentResponse{}, nil
+	if _, err := s.k.Students.Get(ctx, msg.Id); err == nil {
+		return nil, fmt.Errorf("student already exists with id: %s", msg.Id)
+	}
+
+	student := types.Student{
+		Id:   msg.Id,
+		Name: msg.Name,
+		Age:  uint64(msg.Age),
+	}
+
+	if err := student.Validate(); err != nil {
+		return nil, err
+	}
+
+	if err := s.k.Students.Set(ctx, msg.Id, student); err != nil {
+		return nil, err
+	}
+
+	return &types.MsgCreateStudentResponse{Student: &student}, nil
 }
 
 func (s *msgServer) DeleteStudent(ctx context.Context, msg *types.MsgDeleteStudent) (*types.MsgDeleteStudentResponse, error) {

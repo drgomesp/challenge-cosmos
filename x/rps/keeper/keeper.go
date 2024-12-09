@@ -36,6 +36,7 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		cdc:          cdc,
 		addressCodec: addressCodec,
 		authority:    authority,
+		Students:     collections.NewMap(sb, types.StudentsKey, "students", collections.StringKey, codec.CollValue[types.Student](cdc)),
 	}
 
 	schema, err := sb.Build() // Build the whole squema
