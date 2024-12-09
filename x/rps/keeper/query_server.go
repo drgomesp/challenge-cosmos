@@ -12,7 +12,7 @@ type queryServer struct {
 	k Keeper
 }
 
-func NewQueryServerImpl(keeper Keeper) types.QueryServer {
+func NewQueryServer(keeper Keeper) types.QueryServer {
 	return queryServer{
 		k: keeper,
 	}

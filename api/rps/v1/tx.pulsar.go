@@ -16,14 +16,18 @@ import (
 )
 
 var (
-	md_MsgCreateStudent    protoreflect.MessageDescriptor
-	fd_MsgCreateStudent_id protoreflect.FieldDescriptor
+	md_MsgCreateStudent              protoreflect.MessageDescriptor
+	fd_MsgCreateStudent_from_address protoreflect.FieldDescriptor
+	fd_MsgCreateStudent_name         protoreflect.FieldDescriptor
+	fd_MsgCreateStudent_age          protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_lb_rps_v1_tx_proto_init()
 	md_MsgCreateStudent = File_lb_rps_v1_tx_proto.Messages().ByName("MsgCreateStudent")
-	fd_MsgCreateStudent_id = md_MsgCreateStudent.Fields().ByName("id")
+	fd_MsgCreateStudent_from_address = md_MsgCreateStudent.Fields().ByName("from_address")
+	fd_MsgCreateStudent_name = md_MsgCreateStudent.Fields().ByName("name")
+	fd_MsgCreateStudent_age = md_MsgCreateStudent.Fields().ByName("age")
 }
 
 var _ protoreflect.Message = (*fastReflection_MsgCreateStudent)(nil)
@@ -91,9 +95,21 @@ func (x *fastReflection_MsgCreateStudent) Interface() protoreflect.ProtoMessage 
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgCreateStudent) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Id != "" {
-		value := protoreflect.ValueOfString(x.Id)
-		if !f(fd_MsgCreateStudent_id, value) {
+	if x.FromAddress != "" {
+		value := protoreflect.ValueOfString(x.FromAddress)
+		if !f(fd_MsgCreateStudent_from_address, value) {
+			return
+		}
+	}
+	if x.Name != "" {
+		value := protoreflect.ValueOfString(x.Name)
+		if !f(fd_MsgCreateStudent_name, value) {
+			return
+		}
+	}
+	if x.Age != uint32(0) {
+		value := protoreflect.ValueOfUint32(x.Age)
+		if !f(fd_MsgCreateStudent_age, value) {
 			return
 		}
 	}
@@ -112,8 +128,12 @@ func (x *fastReflection_MsgCreateStudent) Range(f func(protoreflect.FieldDescrip
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgCreateStudent) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
-		return x.Id != ""
+	case "lb.rps.v1.MsgCreateStudent.from_address":
+		return x.FromAddress != ""
+	case "lb.rps.v1.MsgCreateStudent.name":
+		return x.Name != ""
+	case "lb.rps.v1.MsgCreateStudent.age":
+		return x.Age != uint32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -130,8 +150,12 @@ func (x *fastReflection_MsgCreateStudent) Has(fd protoreflect.FieldDescriptor) b
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudent) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
-		x.Id = ""
+	case "lb.rps.v1.MsgCreateStudent.from_address":
+		x.FromAddress = ""
+	case "lb.rps.v1.MsgCreateStudent.name":
+		x.Name = ""
+	case "lb.rps.v1.MsgCreateStudent.age":
+		x.Age = uint32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -148,9 +172,15 @@ func (x *fastReflection_MsgCreateStudent) Clear(fd protoreflect.FieldDescriptor)
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgCreateStudent) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
-		value := x.Id
+	case "lb.rps.v1.MsgCreateStudent.from_address":
+		value := x.FromAddress
 		return protoreflect.ValueOfString(value)
+	case "lb.rps.v1.MsgCreateStudent.name":
+		value := x.Name
+		return protoreflect.ValueOfString(value)
+	case "lb.rps.v1.MsgCreateStudent.age":
+		value := x.Age
+		return protoreflect.ValueOfUint32(value)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -171,8 +201,12 @@ func (x *fastReflection_MsgCreateStudent) Get(descriptor protoreflect.FieldDescr
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudent) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
-		x.Id = value.Interface().(string)
+	case "lb.rps.v1.MsgCreateStudent.from_address":
+		x.FromAddress = value.Interface().(string)
+	case "lb.rps.v1.MsgCreateStudent.name":
+		x.Name = value.Interface().(string)
+	case "lb.rps.v1.MsgCreateStudent.age":
+		x.Age = uint32(value.Uint())
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -193,8 +227,12 @@ func (x *fastReflection_MsgCreateStudent) Set(fd protoreflect.FieldDescriptor, v
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudent) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
-		panic(fmt.Errorf("field id of message lb.rps.v1.MsgCreateStudent is not mutable"))
+	case "lb.rps.v1.MsgCreateStudent.from_address":
+		panic(fmt.Errorf("field from_address of message lb.rps.v1.MsgCreateStudent is not mutable"))
+	case "lb.rps.v1.MsgCreateStudent.name":
+		panic(fmt.Errorf("field name of message lb.rps.v1.MsgCreateStudent is not mutable"))
+	case "lb.rps.v1.MsgCreateStudent.age":
+		panic(fmt.Errorf("field age of message lb.rps.v1.MsgCreateStudent is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -208,8 +246,12 @@ func (x *fastReflection_MsgCreateStudent) Mutable(fd protoreflect.FieldDescripto
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgCreateStudent) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "lb.rps.v1.MsgCreateStudent.id":
+	case "lb.rps.v1.MsgCreateStudent.from_address":
 		return protoreflect.ValueOfString("")
+	case "lb.rps.v1.MsgCreateStudent.name":
+		return protoreflect.ValueOfString("")
+	case "lb.rps.v1.MsgCreateStudent.age":
+		return protoreflect.ValueOfUint32(uint32(0))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudent"))
@@ -279,9 +321,16 @@ func (x *fastReflection_MsgCreateStudent) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
-		l = len(x.Id)
+		l = len(x.FromAddress)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Name)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.Age != 0 {
+			n += 1 + runtime.Sov(uint64(x.Age))
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -312,10 +361,22 @@ func (x *fastReflection_MsgCreateStudent) ProtoMethods() *protoiface.Methods {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.Id) > 0 {
-			i -= len(x.Id)
-			copy(dAtA[i:], x.Id)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Id)))
+		if x.Age != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.Age))
+			i--
+			dAtA[i] = 0x18
+		}
+		if len(x.Name) > 0 {
+			i -= len(x.Name)
+			copy(dAtA[i:], x.Name)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Name)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.FromAddress) > 0 {
+			i -= len(x.FromAddress)
+			copy(dAtA[i:], x.FromAddress)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.FromAddress)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -370,7 +431,7 @@ func (x *fastReflection_MsgCreateStudent) ProtoMethods() *protoiface.Methods {
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field FromAddress", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -398,8 +459,59 @@ func (x *fastReflection_MsgCreateStudent) ProtoMethods() *protoiface.Methods {
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Id = string(dAtA[iNdEx:postIndex])
+				x.FromAddress = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Name = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Age", wireType)
+				}
+				x.Age = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.Age |= uint32(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -436,12 +548,18 @@ func (x *fastReflection_MsgCreateStudent) ProtoMethods() *protoiface.Methods {
 }
 
 var (
-	md_MsgCreateStudentResponse protoreflect.MessageDescriptor
+	md_MsgCreateStudentResponse      protoreflect.MessageDescriptor
+	fd_MsgCreateStudentResponse_id   protoreflect.FieldDescriptor
+	fd_MsgCreateStudentResponse_name protoreflect.FieldDescriptor
+	fd_MsgCreateStudentResponse_age  protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_lb_rps_v1_tx_proto_init()
 	md_MsgCreateStudentResponse = File_lb_rps_v1_tx_proto.Messages().ByName("MsgCreateStudentResponse")
+	fd_MsgCreateStudentResponse_id = md_MsgCreateStudentResponse.Fields().ByName("id")
+	fd_MsgCreateStudentResponse_name = md_MsgCreateStudentResponse.Fields().ByName("name")
+	fd_MsgCreateStudentResponse_age = md_MsgCreateStudentResponse.Fields().ByName("age")
 }
 
 var _ protoreflect.Message = (*fastReflection_MsgCreateStudentResponse)(nil)
@@ -509,6 +627,24 @@ func (x *fastReflection_MsgCreateStudentResponse) Interface() protoreflect.Proto
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgCreateStudentResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Id != "" {
+		value := protoreflect.ValueOfString(x.Id)
+		if !f(fd_MsgCreateStudentResponse_id, value) {
+			return
+		}
+	}
+	if x.Name != "" {
+		value := protoreflect.ValueOfString(x.Name)
+		if !f(fd_MsgCreateStudentResponse_name, value) {
+			return
+		}
+	}
+	if x.Age != uint32(0) {
+		value := protoreflect.ValueOfUint32(x.Age)
+		if !f(fd_MsgCreateStudentResponse_age, value) {
+			return
+		}
+	}
 }
 
 // Has reports whether a field is populated.
@@ -524,6 +660,12 @@ func (x *fastReflection_MsgCreateStudentResponse) Range(f func(protoreflect.Fiel
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgCreateStudentResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		return x.Id != ""
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		return x.Name != ""
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		return x.Age != uint32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -540,6 +682,12 @@ func (x *fastReflection_MsgCreateStudentResponse) Has(fd protoreflect.FieldDescr
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudentResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		x.Id = ""
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		x.Name = ""
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		x.Age = uint32(0)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -556,6 +704,15 @@ func (x *fastReflection_MsgCreateStudentResponse) Clear(fd protoreflect.FieldDes
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgCreateStudentResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		value := x.Id
+		return protoreflect.ValueOfString(value)
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		value := x.Name
+		return protoreflect.ValueOfString(value)
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		value := x.Age
+		return protoreflect.ValueOfUint32(value)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -576,6 +733,12 @@ func (x *fastReflection_MsgCreateStudentResponse) Get(descriptor protoreflect.Fi
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudentResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		x.Id = value.Interface().(string)
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		x.Name = value.Interface().(string)
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		x.Age = uint32(value.Uint())
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -596,6 +759,12 @@ func (x *fastReflection_MsgCreateStudentResponse) Set(fd protoreflect.FieldDescr
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgCreateStudentResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		panic(fmt.Errorf("field id of message lb.rps.v1.MsgCreateStudentResponse is not mutable"))
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		panic(fmt.Errorf("field name of message lb.rps.v1.MsgCreateStudentResponse is not mutable"))
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		panic(fmt.Errorf("field age of message lb.rps.v1.MsgCreateStudentResponse is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -609,6 +778,12 @@ func (x *fastReflection_MsgCreateStudentResponse) Mutable(fd protoreflect.FieldD
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgCreateStudentResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
+	case "lb.rps.v1.MsgCreateStudentResponse.id":
+		return protoreflect.ValueOfString("")
+	case "lb.rps.v1.MsgCreateStudentResponse.name":
+		return protoreflect.ValueOfString("")
+	case "lb.rps.v1.MsgCreateStudentResponse.age":
+		return protoreflect.ValueOfUint32(uint32(0))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: lb.rps.v1.MsgCreateStudentResponse"))
@@ -678,6 +853,17 @@ func (x *fastReflection_MsgCreateStudentResponse) ProtoMethods() *protoiface.Met
 		var n int
 		var l int
 		_ = l
+		l = len(x.Id)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Name)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.Age != 0 {
+			n += 1 + runtime.Sov(uint64(x.Age))
+		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
 		}
@@ -706,6 +892,25 @@ func (x *fastReflection_MsgCreateStudentResponse) ProtoMethods() *protoiface.Met
 		if x.unknownFields != nil {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.Age != 0 {
+			i = runtime.EncodeVarint(dAtA, i, uint64(x.Age))
+			i--
+			dAtA[i] = 0x18
+		}
+		if len(x.Name) > 0 {
+			i -= len(x.Name)
+			copy(dAtA[i:], x.Name)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Name)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.Id) > 0 {
+			i -= len(x.Id)
+			copy(dAtA[i:], x.Id)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Id)))
+			i--
+			dAtA[i] = 0xa
 		}
 		if input.Buf != nil {
 			input.Buf = append(input.Buf, dAtA...)
@@ -756,6 +961,89 @@ func (x *fastReflection_MsgCreateStudentResponse) ProtoMethods() *protoiface.Met
 				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgCreateStudentResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Id = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Name", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Name = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Age", wireType)
+				}
+				x.Age = 0
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					x.Age |= uint32(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -1585,7 +1873,9 @@ type MsgCreateStudent struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	FromAddress string `protobuf:"bytes,1,opt,name=from_address,json=fromAddress,proto3" json:"from_address,omitempty"`
+	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Age         uint32 `protobuf:"varint,3,opt,name=age,proto3" json:"age,omitempty"`
 }
 
 func (x *MsgCreateStudent) Reset() {
@@ -1608,17 +1898,35 @@ func (*MsgCreateStudent) Descriptor() ([]byte, []int) {
 	return file_lb_rps_v1_tx_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MsgCreateStudent) GetId() string {
+func (x *MsgCreateStudent) GetFromAddress() string {
 	if x != nil {
-		return x.Id
+		return x.FromAddress
 	}
 	return ""
+}
+
+func (x *MsgCreateStudent) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *MsgCreateStudent) GetAge() uint32 {
+	if x != nil {
+		return x.Age
+	}
+	return 0
 }
 
 type MsgCreateStudentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Id   string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Age  uint32 `protobuf:"varint,3,opt,name=age,proto3" json:"age,omitempty"`
 }
 
 func (x *MsgCreateStudentResponse) Reset() {
@@ -1639,6 +1947,27 @@ func (*MsgCreateStudentResponse) ProtoMessage() {}
 // Deprecated: Use MsgCreateStudentResponse.ProtoReflect.Descriptor instead.
 func (*MsgCreateStudentResponse) Descriptor() ([]byte, []int) {
 	return file_lb_rps_v1_tx_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *MsgCreateStudentResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *MsgCreateStudentResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *MsgCreateStudentResponse) GetAge() uint32 {
+	if x != nil {
+		return x.Age
+	}
+	return 0
 }
 
 type MsgDeleteStudent struct {
@@ -1711,40 +2040,49 @@ var file_lb_rps_v1_tx_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5f, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x1a, 0x17, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x76, 0x31, 0x2f,
-	0x6d, 0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x45, 0x0a, 0x10, 0x4d, 0x73, 0x67,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x28, 0x0a,
-	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72,
-	0x69, 0x6e, 0x67, 0x52, 0x02, 0x69, 0x64, 0x3a, 0x07, 0x82, 0xe7, 0xb0, 0x2a, 0x02, 0x69, 0x64,
-	0x22, 0x1a, 0x0a, 0x18, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74, 0x75,
-	0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x45, 0x0a, 0x10,
-	0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74,
+	0x6d, 0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x88, 0x01, 0x0a, 0x10, 0x4d, 0x73,
+	0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x3b,
+	0x0a, 0x0c, 0x66, 0x72, 0x6f, 0x6d, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x0b,
+	0x66, 0x72, 0x6f, 0x6d, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
+	0x10, 0x0a, 0x03, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x61, 0x67,
+	0x65, 0x3a, 0x11, 0x82, 0xe7, 0xb0, 0x2a, 0x0c, 0x66, 0x72, 0x6f, 0x6d, 0x5f, 0x61, 0x64, 0x64,
+	0x72, 0x65, 0x73, 0x73, 0x22, 0x6a, 0x0a, 0x18, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
 	0x12, 0x28, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4,
 	0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x02, 0x69, 0x64, 0x3a, 0x07, 0x82, 0xe7, 0xb0, 0x2a,
-	0x02, 0x69, 0x64, 0x22, 0x1a, 0x0a, 0x18, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32,
-	0xb2, 0x01, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x51, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x2e, 0x6c, 0x62, 0x2e, 0x72, 0x70,
-	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74,
-	0x75, 0x64, 0x65, 0x6e, 0x74, 0x1a, 0x23, 0x2e, 0x6c, 0x62, 0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76,
-	0x31, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65,
-	0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51, 0x0a, 0x0d, 0x44, 0x65,
-	0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x2e, 0x6c, 0x62,
-	0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65, 0x74,
-	0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x1a, 0x23, 0x2e, 0x6c, 0x62, 0x2e, 0x72, 0x70,
-	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x53, 0x74,
-	0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80,
-	0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x8d, 0x01, 0x0a, 0x0d, 0x63, 0x6f, 0x6d, 0x2e, 0x6c, 0x62, 0x2e,
-	0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
-	0x01, 0x5a, 0x2d, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6c,
-	0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2f, 0x61, 0x70, 0x69,
-	0x2f, 0x6c, 0x62, 0x2f, 0x72, 0x70, 0x73, 0x2f, 0x76, 0x31, 0x3b, 0x72, 0x70, 0x73, 0x76, 0x31,
-	0xa2, 0x02, 0x03, 0x4c, 0x52, 0x58, 0xaa, 0x02, 0x09, 0x4c, 0x62, 0x2e, 0x52, 0x70, 0x73, 0x2e,
-	0x56, 0x31, 0xca, 0x02, 0x09, 0x4c, 0x62, 0x5c, 0x52, 0x70, 0x73, 0x5c, 0x56, 0x31, 0xe2, 0x02,
-	0x15, 0x4c, 0x62, 0x5c, 0x52, 0x70, 0x73, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65,
-	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x4c, 0x62, 0x3a, 0x3a, 0x52, 0x70, 0x73,
-	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10,
+	0x0a, 0x03, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x03, 0x61, 0x67, 0x65,
+	0x22, 0x45, 0x0a, 0x10, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75,
+	0x64, 0x65, 0x6e, 0x74, 0x12, 0x28, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64,
+	0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x02, 0x69, 0x64, 0x3a, 0x07,
+	0x82, 0xe7, 0xb0, 0x2a, 0x02, 0x69, 0x64, 0x22, 0x1a, 0x0a, 0x18, 0x4d, 0x73, 0x67, 0x44, 0x65,
+	0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x32, 0xb2, 0x01, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x51, 0x0a, 0x0d, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x2e, 0x6c,
+	0x62, 0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x1a, 0x23, 0x2e, 0x6c, 0x62, 0x2e, 0x72,
+	0x70, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53,
+	0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51,
+	0x0a, 0x0d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x12,
+	0x1b, 0x2e, 0x6c, 0x62, 0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44,
+	0x65, 0x6c, 0x65, 0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x1a, 0x23, 0x2e, 0x6c,
+	0x62, 0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x53, 0x74, 0x75, 0x64, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x8d, 0x01, 0x0a, 0x0d, 0x63, 0x6f, 0x6d,
+	0x2e, 0x6c, 0x62, 0x2e, 0x72, 0x70, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72,
+	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x2d, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x6c, 0x62, 0x2f, 0x72, 0x70, 0x73, 0x2f, 0x76, 0x31, 0x3b, 0x72,
+	0x70, 0x73, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x4c, 0x52, 0x58, 0xaa, 0x02, 0x09, 0x4c, 0x62, 0x2e,
+	0x52, 0x70, 0x73, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x09, 0x4c, 0x62, 0x5c, 0x52, 0x70, 0x73, 0x5c,
+	0x56, 0x31, 0xe2, 0x02, 0x15, 0x4c, 0x62, 0x5c, 0x52, 0x70, 0x73, 0x5c, 0x56, 0x31, 0x5c, 0x47,
+	0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x4c, 0x62, 0x3a,
+	0x3a, 0x52, 0x70, 0x73, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

@@ -41,6 +41,7 @@ func NewAppModule(cdc codec.Codec, keeper rpsKeeper.Keeper) AppModule {
 }
 
 // ********************* IMPLEMENT AppModuleBasic INTERFACE ******************
+
 // Name returns the checkers module's name.
 func (AppModule) Name() string { return types.ModuleName }
 
@@ -66,12 +67,13 @@ func (AppModule) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
 func (AppModule) ConsensusVersion() uint64 { return ConsensusVersion }
 
 // RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries.
-// func (am AppModule) RegisterServices(cfg module.Configurator) {
-// 	types.RegisterMsgServer(cfg.MsgServer(), rpsKeeper.NewMsgServerImpl(am.keeper))
-// 	types.RegisterQueryServer(cfg.QueryServer(), rpsKeeper.NewQueryServerImpl(am.keeper))
-// }
+func (am AppModule) RegisterServices(cfg module.Configurator) {
+	types.RegisterMsgServer(cfg.MsgServer(), rpsKeeper.NewMsgServer(am.keeper))
+	//types.RegisterQueryServer(cfg.QueryServer(), rpsKeeper.NewQueryServer(am.keeper))
+}
 
 // ********************* IMPLEMENT HasGenesis INTERFACE ******************
+
 // DefaultGenesis returns default genesis state as raw bytes for the module.
 func (AppModule) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
 	return cdc.MustMarshalJSON(types.NewGenesisState())
