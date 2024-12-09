@@ -21,6 +21,14 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 						{ProtoField: "age"},
 					},
 				},
+				{
+					RpcMethod: "DeleteStudent",
+					Use:       "delete student",
+					Short:     "deletes a student",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+					},
+				},
 			},
 		},
 	}

@@ -41,5 +41,15 @@ func (s *msgServer) CreateStudent(ctx context.Context, msg *types.MsgCreateStude
 }
 
 func (s *msgServer) DeleteStudent(ctx context.Context, msg *types.MsgDeleteStudent) (*types.MsgDeleteStudentResponse, error) {
+	_, err := s.k.Students.Get(ctx, msg.Id)
+
+	if err != nil {
+		return nil, fmt.Errorf("no student found with id: %s", msg.Id)
+	}
+
+	if err = s.k.Students.Remove(ctx, msg.Id); err != nil {
+		return nil, err
+	}
+
 	return &types.MsgDeleteStudentResponse{}, nil
 }
