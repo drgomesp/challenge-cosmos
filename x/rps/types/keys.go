@@ -5,5 +5,5 @@ import "cosmossdk.io/collections"
 const ModuleName = "rps"
 
 var (
-	StudentsKey = collections.NewPrefix(0)
+	StudentsKey = collections.NewPrefix("student/")
 )

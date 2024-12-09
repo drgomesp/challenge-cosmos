@@ -5,15 +5,17 @@ import "lb/rps/v1/types.proto";
 import "google/api/annotations.proto";
 import "cosmos/query/v1/query.proto";
 
-option go_package = "challenge/x/rps/types"; // store the generated files here
+option go_package = "challenge/x/rps/types";
 
 service Query {
   rpc GetStudent(GetStudentRequest) returns (GetStudentResponse) {
     option (cosmos.query.v1.module_query_safe) = true;
+    option (google.api.http).get = "/rps/students/v1/student/{id}";
   }
 }
 
 message GetStudentRequest {
+  string id = 1;
 }
 
 message GetStudentResponse {

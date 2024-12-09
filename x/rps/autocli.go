@@ -8,13 +8,25 @@ import (
 // AutoCLIOptions implements the autocli.HasAutoCLIConfig interface.
 func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 	return &autocliv1.ModuleOptions{
-		Query: nil,
+		Query: &autocliv1.ServiceCommandDescriptor{
+			Service: rpsv1.Query_serviceDesc.ServiceName,
+			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
+				{
+					RpcMethod: "GetStudent",
+					Use:       "get-student id",
+					Short:     "get a student by id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
+						{ProtoField: "id"},
+					},
+				},
+			},
+		},
 		Tx: &autocliv1.ServiceCommandDescriptor{
 			Service: rpsv1.Msg_serviceDesc.ServiceName,
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
 					RpcMethod: "CreateStudent",
-					Use:       "create student",
+					Use:       "create-student name age",
 					Short:     "creates a new student",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "name"},
@@ -23,7 +35,7 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 				},
 				{
 					RpcMethod: "DeleteStudent",
-					Use:       "delete student",
+					Use:       "delete-student id",
 					Short:     "deletes a student",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
 						{ProtoField: "id"},

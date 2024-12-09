@@ -6,7 +6,7 @@ import "gogoproto/gogo.proto";
 import "cosmos_proto/cosmos.proto";
 import "cosmos/msg/v1/msg.proto";
 
-option go_package = "challenge/x/rps/types"; // store the generated files here
+option go_package = "challenge/x/rps/types";
 
 service Msg {
   option (cosmos.msg.v1.service) = true;
@@ -34,5 +34,7 @@ message MsgDeleteStudent {
 }
 
 message MsgDeleteStudentResponse {
+  option (cosmos.msg.v1.signer) = "id";
 
+  string id = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 }
